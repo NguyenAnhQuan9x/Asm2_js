@@ -1,0 +1,67 @@
+{
+  "dishes": [
+    {
+      "name": "Bánh bao",
+      "cate": "Món khai vị",
+      "price": "20000",
+      "amount": "7",
+      "description": "Bánh bao nhân thịt",
+      "image": "https://res.cloudinary.com/dv3vzmogk/image/upload/v1665908757/anhhtus/iif8qusrnbjsmf19svss.jpg",
+      "id": 10
+    },
+    {
+      "name": "Mỳ ý",
+      "cate": "Pizza",
+      "price": "50000",
+      "amount": "67",
+      "description": "Mỳ ý đặc biệt",
+      "image": "https://res.cloudinary.com/dv3vzmogk/image/upload/v1665914723/anhhtus/vfyzlrvi8plnv09vde0n.jpg",
+      "id": 11
+    },
+    {
+      "name": "Khoai tây chiên",
+      "cate": "Món khai vị",
+      "price": "50000",
+      "amount": "8",
+      "description": "Khoai tây chiên ròn",
+      "image": "https://res.cloudinary.com/dv3vzmogk/image/upload/v1665914863/anhhtus/a3tlzrkww0sixxw23dhr.jpg",
+      "id": 12
+    },
+    {
+      "name": "Cơm rang",
+      "cate": "Mỳ ý và Cơm",
+      "price": "35000",
+      "amount": "8",
+      "description": "Cơm rang dưa bò",
+      "image": "https://res.cloudinary.com/dv3vzmogk/image/upload/v1665915214/anhhtus/vajt9k2qohmm53xvwwzw.jpg",
+      "id": 13
+    },
+    {
+      "name": "Xà lách trộn",
+      "cate": "Món khai vị",
+      "price": "25000",
+      "amount": "7",
+      "description": "Xà lách trộn sốt mayonnaise",
+      "image": "https://res.cloudinary.com/dv3vzmogk/image/upload/v1665971345/anhhtus/gygbfvez3kbeg2zt64rs.jpg",
+      "id": 14
+    }
+  ],
+  "categories": [
+    {
+      "name": "Pizza",
+      "id": 2
+    },
+    {
+      "name": "Mỳ ý và Cơm",
+      "id": 3
+    },
+    {
+      "name": "Món khai vị",
+      "id": 4
+    },
+    {
+      "name": "Đồ uống",
+      "id": 5
+    }
+  ]
+}
