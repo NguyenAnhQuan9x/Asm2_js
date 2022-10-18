@@ -8,6 +8,7 @@ var description = document.querySelector('#description');
 var selectCate = document.querySelector('#selectCate');
 var dishImage = document.querySelector('#dishImage');
 var preview_image = document.querySelector('#preview-image');
+var Cate = "";
 console.log(ProductId)
 //Upload image
 function uploadImage(url, base64) {
@@ -49,7 +50,7 @@ getProduct(ProductId).then(function(result) {
     dishName.value = result.name
     dishPrice.value = Number(result.price)
     dishAmount.value = Number(result.amount)
-    selectCate.value = result.cate
+    Cate = result.cate
     description.value = result.description
     preview_image.src = result.image
     image_url = result.image
@@ -70,7 +71,7 @@ function render(data){
     cates.innerHTML = "";
     data.forEach(function(value) {
         cates.innerHTML +=`
-        <option value = "${value.name}" ${(value.name == selectCate.value)? 'selected':''}>${value.name}</option>
+        <option value = "${value.name}" ${(value.name == Cate)? 'selected':''}>${value.name}</option>
         `
     });
 }

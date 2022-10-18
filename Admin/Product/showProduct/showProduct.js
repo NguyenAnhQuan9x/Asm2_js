@@ -18,13 +18,13 @@ function render(data){
         <tr>
             <td>${index+1}</td>
             <td>${value.name}</td>
-            <td>${value.cate}</td>
             <td>${value.price}</td>
             <td>${value.amount}</td>
+            <td>${value.cate}</td>
             <td>${value.description}</td>
             <td><image src= "${value.image}" width = "100px" height = "100px"></td>
-            <td><button onclick = "editProduct(${value.id})">Sửa</button></td>
-            <td><button onclick = "deleteProduct(${value.id})">Xóa</button></td>
+            <td><button onclick = "editProduct(${value.id})" id = "edit">Sửa</button></td>
+            <td><button onclick = "deleteProduct(${value.id})" id = "delete">Xóa</button></td>
         </tr>
         `
     });

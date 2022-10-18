@@ -41,8 +41,8 @@ function render(data){
                 <div class="card-body">
                   <h4 class="card-title">${value.name}</h4>
                   <p class="card-text">${value.description}</p>
-                  <p class="card-text" id = "price">${value.price}</p>
-                  <button class="btn btn-primary">Chọn</button>
+                  <p class="card-text" id = "price">${ Intl.NumberFormat('de-DE').format(value.price)} VNĐ</p>
+                  <button class="btn btn-primary" onclick = "addCart(${value.id})">Thêm vào giỏ hàng</button>
                 </div>
               </div>
         `
@@ -60,8 +60,8 @@ function Type(cate){
                 <div class="card-body">
                   <h4 class="card-title">${value.name}</h4>
                   <p class="card-text">${value.description}</p>
-                  <p class="card-text" id = "price">${value.price}</p>
-                  <button class="btn btn-primary">Chọn</button>
+                  <p class="card-text" id = "price">${ Intl.NumberFormat('de-DE').format(value.price)} VNĐ</p>
+                  <button class="btn btn-primary" onclick = "addCart(${value.id})">Thêm vào giỏ hàng</button>
                 </div>
               </div>
         `
@@ -83,11 +83,72 @@ searchInput.onsubmit = function(e){
                 <div class="card-body">
                   <h4 class="card-title">${value.name}</h4>
                   <p class="card-text">${value.description}</p>
-                  <p class="card-text" id = "price">${value.price}</p>
-                  <button class="btn btn-primary">Chọn</button>
+                  <p class="card-text" id = "price">${ Intl.NumberFormat('de-DE').format(value.price)} VNĐ</p>
+                  <button class="btn btn-primary" onclick = "addCart(${value.id})">Thêm vào giỏ hàng</button>
                 </div>
               </div>
         `
         }
     })
+}
+//Add to cart
+cart = document.querySelector('#show-cart');
+if (getOrder('order') != null) {
+    var orderLists = getDish('order');
+    showCart();
+} else {
+    var orderLists = [];
+}
+function addCart(id){
+    alert("Bạn muốn thêm sản phẩm này vào giỏ hàng");
+    dishList.forEach(function(value,index){
+        if(id == value.id){
+            orderLists.push(dishList[index]);
+            localStorage.setItem("order",JSON.stringify(orderLists))
+            location.reload();
+        }
+    })
+}
+function getOrder(id){
+    return JSON.parse(localStorage.getItem(id))
+}
+function showCart(){
+    orderLists = getOrder('order');
+    if(orderLists != ""){
+        document.querySelector('#notify').innerHTML = "";
+    }else{
+        document.querySelector('#notify').innerHTML = "Không có sản phẩm trong giỏ hàng"
+    }
+    var amount = 0;
+    var cash_amount = document.querySelector('#cash-amount');
+    orderLists.forEach(function(value,index){
+        amount += Number(value.price);
+        cart.innerHTML +=`
+        <div id = "productCart" class="card mb-3" style="max-width: 540px; height: 120px;">
+                                <div class="row g-0">
+                                  <div class="col-md-4">
+                                    <img src="${value.image}" class="img-fluid rounded-start" alt="..." width="100px" height="100%">
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="card-body">
+                                      <h5 class="card-title">${value.name}</h5>
+                                      <p class="card-text">${value.description}</p>
+                                      <p class="card-text"><small class="text-muted">Giá: ${ Intl.NumberFormat('de-DE').format(value.price)} VNĐ</small></p>
+                                      <button onclick = "clearCart(${index})" id = "clearCart">Xóa</button
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+        `
+    })
+    console.log(amount)
+    cash_amount.innerHTML += Intl.NumberFormat('de-DE').format(amount)+' VNĐ';
+}
+//Delete productCart
+function clearCart(id){
+    if(confirm("Bạn có chắc chắn muốn xóa không?") == true){
+        orderLists.splice(id,1);
+        localStorage.setItem('order',JSON.stringify(orderLists));
+        location.reload();
+    }
 }

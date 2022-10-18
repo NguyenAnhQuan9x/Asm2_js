@@ -17,8 +17,8 @@ function render(data){
         <tr>
             <td>${index+1}</td>
             <td>${value.name}</td>
-            <td><button onclick = "editCate(${value.id})">Sửa</button></td>
-            <td><button onclick = "deleteCate(${value.id})">Xóa</button></td>
+            <td><button onclick = "editCate(${value.id})" id = "edit">Sửa</button></td>
+            <td><button onclick = "deleteCate(${value.id})" id = "delete">Xóa</button></td>
         </tr>
         `
     });
